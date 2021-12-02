@@ -9,7 +9,7 @@ function useSongInfo() {
     useRecoilState(currentTrackIdState);
   const [songInfo, setSongInfo] = useState(null);
 
-  useEffect(() => {
+  useEffect(() => { 
     const fetchSongInfo = async () => {
       if (currentIdTrack) { 
         const trackInfo = await fetch(
@@ -23,7 +23,7 @@ function useSongInfo() {
 
         setSongInfo(trackInfo);
       } 
-    };
+    };  
 
     fetchSongInfo();
   }, [currentIdTrack, spotfyApi]);

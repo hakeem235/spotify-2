@@ -4,10 +4,7 @@ import useSpotify from "../hooks/useSpotify";
 import useSongInfo from "../hooks/useSongInfo";
 import { currentTrackIdState, isPlayingState } from "../atoms/songAtoms";
 import { useRecoilState } from "recoil";
-import {
-  HeartIcon,
-  VolumeUpIcon as VolumeDownIcon,
-} from "@heroicons/react/outline";
+import { VolumeUpIcon as VolumeDownIcon } from "@heroicons/react/outline";
 import {
   RewindIcon,
   FastForwardIcon,
@@ -44,7 +41,7 @@ function Player() {
 
   const handlePlayPause = () => {
     spoitfyApi.getMyCurrentPlaybackState().then((data) => {
-      if (data.body?.is_playing) {
+      if (data.body.is_playing) {
         spoitfyApi.pause();
         setIsPlaying(false);
       } else {
@@ -77,13 +74,15 @@ function Player() {
   return (
     <div className="h-24 bg-gradient-to-b from-black to-gray-900 text-white grid grid-cols-3 text-xs md:text-base px- md:px-8">
       <div className="flex items-center space-x-4">
-        <img className="hidden md:inline h-10 w-10" src={songInfo?.album?.images?.[0]?.url}
+        <img
+          className="hidden md:inline h-10 w-10"
+          src={songInfo?.album?.images?.[0]?.url}
           alt=""
         />
-      <div>
-        <h3>{songInfo?.name}</h3>
-        <p>{songInfo?.artists?.[0]?.name}</p>
-      </div>
+        <div>
+          <h3>{songInfo?.name}</h3>
+          <p>{songInfo?.artists?.[0]?.name}</p>
+        </div>
       </div>
       {/* center */}
       <div className="flex justify-evenly items-center">
